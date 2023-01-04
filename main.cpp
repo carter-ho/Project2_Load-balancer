@@ -14,6 +14,13 @@ int main(){
     cin >> numServers; // Get user input from the keyboard
     cout << "Number of servers is: " << numServers << endl; // Display the input value
 
+	/*
+	for(int i = 0; i < numServers; i++){
+		
+		//Initialize Server
+		
+	}
+	*/
 
     //int timesRun = 20;
 	int timesRun;
@@ -21,6 +28,9 @@ int main(){
     cin >> timesRun; // Get user input from the keyboard
     cout << "The time you want to run the load balancer is: " << timesRun << endl; // Display the input value
 
+	int fullQueue = numServers * 20;
+	
+	cout << "The Full Queue is "<< fullQueue << endl;
 
     return 0;
 }
