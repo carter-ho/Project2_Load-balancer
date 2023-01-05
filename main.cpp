@@ -12,14 +12,22 @@
 
 using namespace std;
 
+bool allServersAvailable(vector<Webserver> s){
+	for(int i = 0; i < s.size(); i++){
+		if(s[i].getStatus() == false){
+			return false;
+		}
+	}
+	return true;
+}
 
 int main(){
 
-	int num_servers = 5;
-	int num_clock_cycles = 10000;
-	float new_request_probability = 10;
+	int num_servers = 10;
+	int num_clock_cycles = 100000;
+	float new_request_probability = 2;
 	vector<Webserver> webservers;
-	const std::string alphabet{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	const std::string alphabet{"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"};
 
 	/*
 	cout << "Input number of servers: "; // Type a number and press enter
@@ -49,11 +57,18 @@ int main(){
 				if(l.isNotEmpty()) {
 					webservers[j].takeRequest(l.getRequest(), i);
 				}
+
 			}
 			webservers[j].update(i);
-			l.addRequest();
     	}
+		if(!l.isNotEmpty() && allServersAvailable(webservers)){
+			cout << "Queue empty and all requests have been completed" << endl;
+			break;
+		}
+		l.addRequest();
 	}
+
+	cout << "Process complete" << endl;
 
     return 0;
 }

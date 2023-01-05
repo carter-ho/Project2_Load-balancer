@@ -31,7 +31,7 @@ bool Loadbalancer::isNotEmpty()
 void Loadbalancer::addRequest(){
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, 100);
+    std::uniform_int_distribution<> dis(1, 100);
     int random_num = dis(gen);
 
     if(random_num > (100 - new_request_probability)){
