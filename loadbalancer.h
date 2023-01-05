@@ -9,7 +9,8 @@ class Loadbalancer
 public:
     Loadbalancer(int queue_size, int max_time, float probability);
     Request getRequest();
-    void update();
+    bool isNotEmpty();
+    void addRequest();
 private:
     std::queue<Request> request_queue;
     std::vector<Webserver> webservers;

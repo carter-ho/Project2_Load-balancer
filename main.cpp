@@ -15,37 +15,44 @@ using namespace std;
 
 int main(){
 
-	int num_webservers;
-	int num_requests = num_webservers * 20;
-	int num_clock_cycles;
-	float new_request_probability;
+	int num_servers = 5;
+	int num_clock_cycles = 10000;
+	float new_request_probability = 10;
 	vector<Webserver> webservers;
+	const std::string alphabet{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
 
-    //int numServers = 50;
-    int numServers;
+	/*
 	cout << "Input number of servers: "; // Type a number and press enter
-    cin >> numServers; // Get user input from the keyboard
-    cout << "Number of servers is: " << numServers << endl; // Display the input value
+    cin >> num_servers; // Get user input from the keyboard
+    cout << "Number of servers is: " << num_servers << endl; // Display the input value
+*/
 
-	for(int i = 0; i < num_webservers; i++){
-		
+	for(int i = 0; i < num_servers; i++){
+		char c = alphabet.at(i);
+		Webserver w(c);
+		webservers.push_back(w);
 	}
 
-    //int timesRun = 20;
-	int timesRun;
-	cout << "Input the time you want to run the load balancer : "; // Type a number and press enter
-    cin >> timesRun; // Get user input from the keyboard
-    cout << "The time you want to run the load balancer is: " << timesRun << endl; // Display the input value
+	int num_requests = num_servers * 20;
 
+	/*
+	cout << "Input the time you want to run the load balancer : "; // Type a number and press enter
+    cin >> num_clock_cycles; // Get user input from the keyboard
+    cout << "The time you want to run the load balancer is: " << num_clock_cycles << endl; // Display the input value
+*/
 
 	Loadbalancer l(num_requests, num_clock_cycles, new_request_probability);
 
-
 	for(int i = 0; i < num_clock_cycles; i++){
-		for(auto server : webservers){
-			if(server.)
-        	server.processRequests(l.getRequest());
-    }
+		for(int j = 0; j < num_servers; j++){
+			if(webservers[j].getStatus()){
+				if(l.isNotEmpty()) {
+					webservers[j].takeRequest(l.getRequest(), i);
+				}
+			}
+			webservers[j].update(i);
+			l.addRequest();
+    	}
 	}
 
     return 0;
