@@ -33,7 +33,7 @@ bool Loadbalancer::isNotEmpty()
     return true;
 }
 
-void Loadbalancer::addRequest(){
+bool Loadbalancer::addRequest(){
     
 	// Creates a random number to test against probability threshold
 	std::random_device rd;
@@ -45,5 +45,7 @@ void Loadbalancer::addRequest(){
     if(random_num > (100 - new_request_probability)){
         Request f;
         request_queue.push(f);
+        return true;
     }
+    return false;
 }

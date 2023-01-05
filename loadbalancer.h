@@ -10,7 +10,8 @@ public:
     Loadbalancer(int queue_size, int max_time, float probability);
     Request getRequest();
     bool isNotEmpty();
-    void addRequest();
+    bool addRequest();
+    int queueSize(){return request_queue.size(); }
 private:
     std::queue<Request> request_queue;
     std::vector<Webserver> webservers;

@@ -16,7 +16,7 @@ main.o: main.cpp
 	g++ -c -g main.cpp
 
 clean:
-	rm -f *.o test
+	rm -f *.o test.exe test.out test
 
 run: test
 	./test
