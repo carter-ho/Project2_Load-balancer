@@ -3,11 +3,16 @@
 #include <limits>
 #include <vector>
 #include <queue>
+
+#include "webserver.h"
+#include "loadbalancer.h"
+#include "request.h"
+
 using std::cin, std::cout, std::endl, std::string;
 
 int main(){
 
-
+	/*
     //int numServers = 50;
     int numServers;
 	cout << "Input number of servers: "; // Type a number and press enter
@@ -20,7 +25,7 @@ int main(){
 		//Initialize Server
 		
 	}
-	*/
+	
 
     //int timesRun = 20;
 	int timesRun;
@@ -31,6 +36,9 @@ int main(){
 	int fullQueue = numServers * 20;
 	
 	cout << "The Full Queue is "<< fullQueue << endl;
+	*/
+	Request t;
+	cout << t.getIPin() << endl << t.getIPout() << endl << t.getTime() << endl;
 
     return 0;
 }
