@@ -12,14 +12,13 @@ using std::cin, std::cout, std::endl, std::string;
 
 int main(){
 
-	/*
+
     //int numServers = 50;
     int numServers;
 	cout << "Input number of servers: "; // Type a number and press enter
     cin >> numServers; // Get user input from the keyboard
     cout << "Number of servers is: " << numServers << endl; // Display the input value
 
-	/*
 	for(int i = 0; i < numServers; i++){
 		
 		//Initialize Server
@@ -36,7 +35,7 @@ int main(){
 	int fullQueue = numServers * 20;
 	
 	cout << "The Full Queue is "<< fullQueue << endl;
-	*/
+
 	Request t;
 	cout << t.getIPin() << endl << t.getIPout() << endl << t.getTime() << endl;
 
