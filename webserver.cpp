@@ -1,11 +1,18 @@
 #include "webserver.h"
 
 Webserver::Webserver(){
-    isAvailable = true;
+    timeLeft = 0;
 }
 
-void Webserver::processRequests(){
-    isAvailable = false;
-    // Do thing
-    isAvailable = true;
+
+
+void Webserver::processRequests(Request r){
+	
+	timeLeft = r.getTime();
+	
+	while(timeLeft > 0){
+		
+		timeLeft--;
+	}
+	
 }

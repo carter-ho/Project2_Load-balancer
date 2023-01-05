@@ -7,10 +7,10 @@ class Webserver
 {
 public:
     Webserver();
-    void processRequests();
+    void processRequests(Request r);
     
 private:
-     bool isAvailable;
+    int timeLeft;
 
 };
 

@@ -3,6 +3,8 @@
 #include <random>
 #include <string>
 
+using std::cin, std::cout, std::endl, std::string;
+
 Request::Request(){
     ip_in = generate_ipv4_address();
     ip_out = generate_ipv4_address();
