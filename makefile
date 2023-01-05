@@ -1,4 +1,4 @@
-all: test
+all: clean test
 
 test: loadbalancer.o request.o main.o
 	g++ -g loadbalancer.o request.o main.o -o test
@@ -14,7 +14,7 @@ main.o: main.cpp
 	g++ -c -g main.cpp
 
 clean:
-	rm -f *.0 test
+	rm -f *.o test
 
 run: test
 	./test
