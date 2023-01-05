@@ -4,10 +4,15 @@
 
 using namespace std;
 
-Loadbalancer::Loadbalancer(int queue_size, int max_time, float probability){
+/**
+ * @brief Construct a new Loadbalancer object and fills a queue according to the queue_size parameter
+ * 
+ * @param queue_size The number of requests the queue should start with
+ * @param probability The percentage chance that a new request is created on each clock cycle
+ */
+Loadbalancer::Loadbalancer(int queue_size, float probability){
     
 	// Initializes a Loadbalancer with all of its parameterized attributes and created all requests to add to the queue
-	max_cycles = max_time;
     new_request_probability = probability;
     for(int i = 0; i < queue_size; i++){
         Request r;
@@ -15,6 +20,11 @@ Loadbalancer::Loadbalancer(int queue_size, int max_time, float probability){
     }
 }
 
+/**
+ * @brief Returns and removes the request at the front of the queue
+ * 
+ * @return Request 
+ */
 Request Loadbalancer::getRequest(){
 	
 	// Stores and pops the request at the front of the queue
@@ -23,6 +33,12 @@ Request Loadbalancer::getRequest(){
     return r;
 }
 
+/**
+ * @brief Returns a boolean based on if the request queue is empty or not
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Loadbalancer::isNotEmpty()
 {
 	// Returns whether the queue is empty or not
@@ -33,6 +49,12 @@ bool Loadbalancer::isNotEmpty()
     return true;
 }
 
+/**
+ * @brief Randomly adds a request based on the new_request_probability variable
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Loadbalancer::addRequest(){
     
 	// Creates a random number to test against probability threshold

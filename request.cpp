@@ -5,6 +5,10 @@
 
 using std::cin, std::cout, std::endl, std::string;
 
+/**
+ * @brief Construct a new Request object with a random start and end IP as well as a random time.
+ * 
+ */
 Request::Request(){
     ip_in = generate_ipv4_address(); // Calls random funtion to create a random ip in address
     ip_out = generate_ipv4_address(); // Calls random funtion to create a random ip out address
@@ -17,9 +21,11 @@ Request::Request(){
     time = dis(gen);
 }
 
-
-
-// Randomized IP Address generator function created by ChatGPT
+/**
+ * @brief Random IP Address generator function created by ChatGPT
+ * 
+ * @return std::string 
+ */
 std::string Request::generate_ipv4_address() {
   std::random_device rd;
   std::mt19937 gen(rd());

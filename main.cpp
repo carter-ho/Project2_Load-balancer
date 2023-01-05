@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author Carter Ho, Rohan Govathoti
+ * @brief Loadbalancer created for CSCE 412 - Cloud Computing
+ * @version 0.1
+ * @date 2023-01-05
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -12,7 +22,13 @@
 
 using namespace std;
 
-// Function that checks that status of all servers in order to determine if all requests are complete
+/**
+ * @brief Function that checks that status of all servers in order to determine if all requests are complete
+ * 
+ * @param s A vector<Webserver>
+ * @return true 
+ * @return false 
+ */
 bool allServersAvailable(vector<Webserver> s){
 	for(int i = 0; i < s.size(); i++){
 		if(s[i].getStatus() == false){
@@ -42,7 +58,7 @@ int main(){
 	int num_requests = num_servers * 20;
 
 	// initialize Loadbalancer with parameters
-	Loadbalancer l(num_requests, num_clock_cycles, new_request_probability);
+	Loadbalancer l(num_requests, new_request_probability);
 
 	// keep track of new requests
 	int requestsAdded = 0;

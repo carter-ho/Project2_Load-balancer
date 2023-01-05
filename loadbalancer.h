@@ -4,19 +4,26 @@
 #include "request.h"
 #include "webserver.h"
 
+/**
+ * @brief Object that contains and controls the request queue
+ * 
+ */
 class Loadbalancer
 {
 public:
-    Loadbalancer(int queue_size, int max_time, float probability);
+    Loadbalancer(int queue_size, float probability);
     Request getRequest();
     bool isNotEmpty();
     bool addRequest();
+    /**
+     * @brief Returns the current size of the request queue
+     * 
+     * @return int 
+     */
     int queueSize(){return request_queue.size(); }
 private:
     std::queue<Request> request_queue;
     std::vector<Webserver> webservers;
-    int current_cycle = 0;
-    int max_cycles;
     float new_request_probability;
 };
 
