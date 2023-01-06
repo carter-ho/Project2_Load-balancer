@@ -62,6 +62,7 @@ int main(){
 
 	// keep track of new requests
 	int requestsAdded = 0;
+	bool completedAll = false;
 	// Main loop
 	for(int i = 0; i < num_clock_cycles; i++){
 		for(int j = 0; j < num_servers; j++){
@@ -79,7 +80,7 @@ int main(){
     	}
 		// If queue and all webservers complete, exit early
 		if(!l.isNotEmpty() && allServersAvailable(webservers)){
-			cout << "Queue empty and all requests have been completed" << endl;
+			completedAll = true;
 			break;
 		}
 		// Randomly add a new request, if new request added, increment tracker
@@ -91,9 +92,17 @@ int main(){
 	}
 	// Output logs
 	cout << "Process complete" << endl;
+	if(completedAll){
+		cout << "Queue empty and all requests have been completed" << endl;
+	}
+	else {
+		cout << "Queue not empty, not all requests complete (requests may still be in servers)" << endl;
+	}
 	cout << "Queue began with " << num_requests << " requests" << endl;
 	cout << "Queue ended with " << l.queueSize() << " requests" << endl;
 	cout << "Requests added to queue during process: " << requestsAdded << endl;
+	cout << "Servers used: " << num_servers << endl;
+	cout << "Clock cyles ran: " << num_clock_cycles << endl;
 	cout << "Range for task times: [2, 500]" << endl;
 
     return 0;
